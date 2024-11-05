@@ -1,0 +1,121 @@
+{
+	"$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+	"blocks": [
+		{
+			"alignment": "right",
+			"segments": [
+				{
+					"type": "root",
+					"template": " <#757575,>as</> root",
+					"style": "plain",
+					"foreground": "#ff8080"
+				},
+				{
+					"type": "executiontime",
+					"properties": {
+						"style": "austin",
+						"always_enabled": true
+					},
+					"template": "\udb85\udc0b {{ .FormattedMs }}",
+					"style": "plain",
+					"foreground": "#757575"
+				},
+				{
+					"type": "sysinfo",
+					"properties": {
+						"precision": 2
+					},
+					"template": "<#757575,>|</> \uf4bc  {{ round .PhysicalPercentUsed .Precision }}% ",
+					"style": "plain",
+					"foreground": "#757575"
+				},
+				{
+					"type": "sysinfo",
+					"template": " \ue266  {{ (div ((sub .PhysicalTotalMemory .PhysicalFreeMemory)|float64) 1073741824.0) }}/{{ (div .PhysicalTotalMemory 1073741824.0) }}GB",
+					"style": "plain",
+					"foreground": "#757575"
+				},
+				{
+					"type": "battery",
+					"properties": {
+						"discharging_icon": "  ",
+						"charging_icon": "  ",
+						"charged_icon": "  "
+					},
+					"template": " {{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }}   ",
+					"style": "plain",
+					"foreground": "#757575"
+				}
+			],
+			"type": "prompt"
+		},
+		{
+			"alignment": "left",
+			"newline": true,
+			"segments": [
+				{
+					"type": "path",
+					"properties": {
+						"style": "folder"
+					},
+					"template": "\u256d\u2500 \uf07b  {{ .Path }} ",
+					"style": "plain",
+					"foreground": "#757575"
+				},
+				{
+					"type": "project",
+					"template": " {{ if .Error }}{{ .Error }}{{ else }}{{ if .Version }} \uf487  {{ .Version }}{{ end }} {{ if .Name }} {{ .Name }}{{ end }}{{ end }}  ",
+					"style": "powerline",
+					"powerline_symbol": "\ue0b0",
+					"background": "#5c4f7e",
+					"foreground": "#f0f0f0"
+				},
+				{
+					"type": "git",
+					"properties": {
+						"branch_icon": "\ue725 "
+					},
+					"template": "  {{ .HEAD }}  ",
+					"style": "powerline",
+					"powerline_symbol": "\ue0b0",
+					"background": "transparent",
+					"foreground": "#757575"
+				},
+				{
+					"type": "git",
+					"properties": {
+						"fetch_status": true,
+						"status_formats": { "Added": "A: %d ", "Modified": "M: %d ", "Staged": "S: %d ", "Untracked": "U: %d ", "Deleted": "D: %d " }
+					},
+					"template": " {{ if .Working.Changed }} {{ .Working.String }}{{ end }} ",
+					"style": "powerline",
+					"powerline_symbol": "\ue0b0",
+					"background": "#5c4f7e",
+					"foreground": "#f0f0f0"
+				}
+			],
+			"type": "prompt"
+		},
+		{
+			"alignment": "left",
+			"newline": true,
+			"segments": [
+				{
+					"type": "text",
+					"template": "\u2570\u2500 ",
+					"style": "plain",
+					"foreground": "#757575"
+				},
+				{
+					"type": "text",
+					"template": "\uf105",
+					"style": "plain",
+					"foreground": "#757575"
+				}
+			],
+			"type": "prompt"
+		}
+	],
+	"final_space": true,
+	"version": 2
+}
